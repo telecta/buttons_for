@@ -8,24 +8,35 @@ module ButtonsFor
     class ButtonsForBuilder
       include ActionView::Helpers
 
-      attr_reader :object, :template
+      attr_accessor :object, :template, :output_buffer
 
       def initialize(object, template)
         @object, @template = object, template
       end
 
       def button(text, url, options = {}, &block)
-        link_to label(text), url, class: classes(options)
+        link_to label(text), url, class: classes(options), title: label(text)
+      end
+
+      def new(url, options = {}, &block)
+        link_to url, class: classes(options), title: label(:new) do
+          content_tag(:i, label(:new), class: "fa fa-plus")
+        end
       end
 
       private
 
+      def t(string)
+        I18n.t("buttons_for.#{string.to_s}")
+      end
+
       def label(text)
-        text.capitalize
+        t(text)
       end
 
       def classes(options)
         "btn".tap do |s|
+          s << " #{options[:class]}" if options[:class]
         end
       end
     end
