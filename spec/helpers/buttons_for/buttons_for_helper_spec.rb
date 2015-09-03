@@ -47,7 +47,7 @@ describe ButtonsFor::ButtonsForHelper do
         store_translations(:en, buttons_for: {delete: "Borrar", confirm: "¿Estas seguro?"})
 
         expect(builder.delete("#")).to eq(
-          "<a class=\"btn btn-danger\" confirm=\"¿Estas seguro?\" title=\"Borrar\" rel=\"nofollow\" data-method=\"delete\" href=\"#\">" +
+          "<a class=\"btn btn-danger\" data-confirm=\"¿Estas seguro?\" title=\"Borrar\" rel=\"nofollow\" data-method=\"delete\" href=\"#\">" +
             "<span class=\"fa fa-trash-o\"></span> Borrar" +
           "</a>"
         )
