@@ -20,7 +20,7 @@ module ButtonsFor
 
       def new(url, options = {}, &block)
         link_to url, class: classes(options), title: label(:new) do
-          content_tag(:i, label(:new), class: "fa fa-plus")
+          content_tag(:span, '', class: "fa fa-plus") + " " + label(:new)
         end
       end
 

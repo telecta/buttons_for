@@ -24,7 +24,7 @@ describe ButtonsFor::ButtonsForHelper do
 
         expect(builder.new("#")).to eq(
           "<a class=\"btn\" title=\"Nuevo\" href=\"#\">" +
-            "<i class=\"fa fa-plus\">Nuevo</i>" +
+            "<span class=\"fa fa-plus\"></span> Nuevo" +
           "</a>"
         )
       end
