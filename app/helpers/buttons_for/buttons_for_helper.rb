@@ -19,8 +19,22 @@ module ButtonsFor
       end
 
       def new(url, options = {}, &block)
+        options[:class] ||= "btn-success"
         link_to url, class: classes(options), title: label(:new) do
           content_tag(:span, '', class: "fa fa-plus") + " " + label(:new)
+        end
+      end
+
+      def edit(url, options = {}, &block)
+        link_to url, class: classes(options), title: label(:edit) do
+          content_tag(:span, '', class: "fa fa-pencil") + " " + label(:edit)
+        end
+      end
+
+      def delete(url, options = {}, &block)
+        options[:class] ||= "btn-danger"
+        link_to url, class: classes(options), method: :delete, :"data-confirm" => t(:confirm), title: label(:delete) do
+          content_tag(:span, '', class: "fa fa-trash-o") + " " + label(:delete)
         end
       end
 
