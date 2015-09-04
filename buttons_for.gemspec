@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = ButtonsFor::VERSION
   s.authors     = ["Ole J. Rosendahl"]
   s.email       = ["ole.johnny.rosendahl@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ButtonsFor."
-  s.description = "TODO: Description of ButtonsFor."
+  s.homepage    = "https://github.com/blacktangent/buttons_for"
+  s.summary     = "Easily create Bootstrap buttons in Rails."
+  s.description = "ActionView Helper for generating Bootstrap buttons."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
