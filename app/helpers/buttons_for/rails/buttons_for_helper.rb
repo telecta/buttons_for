@@ -8,6 +8,7 @@ module ButtonsFor
 
       class ButtonsForBuilder
         include ActionView::Helpers
+        include FontAwesome::Rails::IconHelper
 
         attr_accessor :object, :template, :output_buffer
 
@@ -22,20 +23,20 @@ module ButtonsFor
         def new(url, options = {}, &block)
           options[:class] ||= "btn-success"
           link_to url, class: classes(options), title: label(:new) do
-            content_tag(:i, '', class: "fa fa-plus") + " " + label(:new)
+            fa_icon "plus", text: label(:new)
           end
         end
 
         def edit(url, options = {}, &block)
           link_to url, class: classes(options), title: label(:edit) do
-            content_tag(:i, '', class: "fa fa-pencil") + " " + label(:edit)
+            fa_icon "pencil", text: label(:edit)
           end
         end
 
         def delete(url, options = {}, &block)
           options[:class] ||= "btn-danger"
           link_to url, class: classes(options), method: :delete, :"data-confirm" => t(:confirm), title: label(:delete) do
-            content_tag(:i, '', class: "fa fa-trash-o") + " " + label(:delete)
+            fa_icon "trash-o", text: label(:delete)
           end
         end
 

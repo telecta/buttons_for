@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "railties", ">= 3.2", "< 5.0"
+  s.add_dependency "font-awesome-rails", "~> 4.4"
 end
