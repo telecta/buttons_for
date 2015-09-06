@@ -1,6 +1,6 @@
 en:
   buttons_for:
-    new: "Nuevo"
-    edit: "Editar"
-    delete: "Borrar"
-    confirm: "¿Estas seguro?"
+    new: "New"
+    edit: "Edit"
+    delete: "Delete"
+    confirm: "Are you sure?"
