@@ -7,6 +7,18 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     assert_select "a.btn[href=\"#\"][title=\"New\"]", text: "New"
   end
 
+  test "#button capitalize text if translation is symbol" do
+    with_concat_buttons_for(Object.new) { |b| b.button "capitalized text", "#" }
+    assert_select "a.btn", text: "Capitalized Text"
+  end
+
+  test "#button uses the translation if value exists for key" do
+    store_translations(:en, buttons_for: {close: "Lukk"}) do
+      with_concat_buttons_for(Object.new) { |b| b.button :close, "#" }
+    end
+    assert_select "a.btn", text: "Lukk"
+  end
+
   test "#new" do
     with_concat_buttons_for(Object.new) { |b| b.new "#" }
     assert_select "a.btn.btn-success[href=\"#\"][title=\"New\"]", text: "New" do |element|
@@ -29,11 +41,19 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
   end
 
   test "options[:label]" do
-    with_concat_buttons_for(Object.new) { |b| b.new "#", label: "New project" }
-    assert_select "a", text: "New project"
+    with_concat_buttons_for(Object.new) { |b| b.new "#", label: "New Project" }
+    assert_select "a", text: "New Project"
   end
 
   private
+
+  def store_translations(locale, translations, &block)
+    I18n.backend.store_translations locale, translations
+    yield
+  ensure
+    I18n.reload!
+    I18n.backend.send :init_translations
+  end
 
   def with_concat_buttons_for(*args, &block)
     concat buttons_for(*args, &block)

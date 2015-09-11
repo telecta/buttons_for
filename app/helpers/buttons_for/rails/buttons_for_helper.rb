@@ -18,12 +18,12 @@ module ButtonsFor
 
         def button(text, url, options = {}, &block)
           options[:class] = classes(options)
-          options[:title] = text
+          options[:title] = t(text)
 
           label = if options[:icon]
-            fa_icon options.delete(:icon), text: text
+            fa_icon options.delete(:icon), text: t(text)
           else
-            text
+            t(text)
           end
 
           link_to label, url, options
@@ -58,7 +58,7 @@ module ButtonsFor
         private
 
         def t(string)
-          I18n.t("buttons_for.#{string.to_s}")
+          I18n.t("buttons_for.#{string.to_s}", default: string.to_s.titleize)
         end
 
         def label(text)
