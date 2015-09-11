@@ -17,27 +17,41 @@ module ButtonsFor
         end
 
         def button(text, url, options = {}, &block)
-          link_to text, url, class: classes(options), title: text
+          options[:class] = classes(options)
+          options[:title] = text
+
+          label = if options[:icon]
+            fa_icon options.delete(:icon), text: text
+          else
+            text
+          end
+
+          link_to label, url, options
         end
 
         def new(url, options = {}, &block)
           options[:class] ||= "btn-success"
-          link_to url, class: classes(options), title: label(:new) do
-            fa_icon "plus", text: label(:new)
-          end
+          options[:label] ||= label(:new)
+          options[:icon] ||= "plus"
+
+          button options[:label], url, options
         end
 
         def edit(url, options = {}, &block)
-          link_to url, class: classes(options), title: label(:edit) do
-            fa_icon "pencil", text: label(:edit)
-          end
+          options[:label] ||= label(:edit)
+          options[:icon] ||= "pencil"
+
+          button options[:label], url, options
         end
 
         def delete(url, options = {}, &block)
           options[:class] ||= "btn-danger"
-          link_to url, class: classes(options), method: :delete, :"data-confirm" => t(:confirm), title: label(:delete) do
-            fa_icon "trash-o", text: label(:delete)
-          end
+          options[:label] ||= label(:delete)
+          options[:icon]  ||= "trash-o"
+          options[:method] = :delete
+          options["data-confirm"] = t(:confirm)
+
+          button options[:label], url, options
         end
 
         private

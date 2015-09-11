@@ -28,6 +28,11 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     end
   end
 
+  test "options[:label]" do
+    with_concat_buttons_for(Object.new) { |b| b.new "#", label: "New project" }
+    assert_select "a", text: "New project"
+  end
+
   private
 
   def with_concat_buttons_for(*args, &block)

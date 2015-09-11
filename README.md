@@ -50,6 +50,12 @@ framework, bring [Font Awesome][fontawesome] into your project using
 <% end %>
 ```
 
+## Options
+
+Available options:
+
+* __:label__ - Override standard label
+
 ## Sample
 
 Sample applicaiton using `buttons_for` can be found
