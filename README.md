@@ -1,5 +1,7 @@
 [travis]: https://travis-ci.org/blacktangent/buttons_for
 [codeclimate]: https://codeclimate.com/github/blacktangent/buttons_for
+[fontawesome]: https://fortawesome.github.io/Font-Awesome
+[fontawesomerails]: https://github.com/bokmann/font-awesome-rails
 [coveralls]: https://coveralls.io/r/blacktangent/buttons_for
 
 # ButtonsFor
@@ -8,9 +10,7 @@
 [![Code Climate](https://codeclimate.com/github/blacktangent/buttons_for/badges/gpa.svg)][codeclimate]
 [![Test Coverage](http://img.shields.io/coveralls/blacktangent/buttons_for/master.svg)][coveralls]
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/buttons_for`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+ActiveView helper to generate Bootstrap buttons and dropdown-buttons.
 
 ## Installation
 
@@ -28,9 +28,23 @@ Or install it yourself as:
 
     $ gem install buttons_for
 
+The gem depends on [Bootstrap 3](http://getbootstrap.com/) to create buttons and dropdown-buttons. Bring bootstrap into
+your project by using [Bootstrap for Sass](https://github.com/twbs/bootstrap-sass) or you preferred method.
+
+`buttons_for` depends on [Font Awesome][fontawesome] icon and CSS
+framework, bring [Font Awesome][fontawesome] into your project using
+[font-awesome-rails][fontawesomerails] or your preferred method.
+
 ## Usage
 
-TODO: Write usage instructions here
+```erb
+<%= buttons_for @project do |b| %>
+  <%= b.button :complete, new_project_complete_path(@project), icon: "check" %>
+  <%= b.new %>
+  <%= b.edit %>
+  <%= b.delete %>
+<% end %>
+```
 
 ## Development
 

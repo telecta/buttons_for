@@ -2,10 +2,6 @@ require "test_helper"
 
 class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
 
-  def with_concat_buttons_for(*args, &block)
-    concat buttons_for(*args, &block)
-  end
-
   test "#button" do
     with_concat_buttons_for(Object.new) { |b| b.button "New", "#" }
     assert_select "a.btn[href=\"#\"][title=\"New\"]", text: "New"
@@ -30,6 +26,12 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     assert_select "a.btn.btn[href=\"#\"][title=\"Delete\"][data-confirm=\"Are you sure?\"]", text: "Delete" do |element|
       assert_select element, "i.fa.fa-trash-o"
     end
+  end
+
+  private
+
+  def with_concat_buttons_for(*args, &block)
+    concat buttons_for(*args, &block)
   end
 
 end
