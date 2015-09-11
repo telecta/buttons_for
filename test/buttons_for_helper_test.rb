@@ -16,7 +16,7 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
 
   test "#edit" do
     with_concat_buttons_for(Object.new) { |b| b.edit "#" }
-    assert_select "a.btn.btn[href=\"#\"][title=\"Edit\"]", text: "Edit" do |element|
+    assert_select "a.btn.btn-default[href=\"#\"][title=\"Edit\"]", text: "Edit" do |element|
       assert_select element, "i.fa.fa-pencil"
     end
   end

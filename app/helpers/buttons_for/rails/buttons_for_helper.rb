@@ -38,6 +38,7 @@ module ButtonsFor
         end
 
         def edit(url, options = {}, &block)
+          options[:class] ||= "btn-default"
           options[:label] ||= label(:edit)
           options[:icon] ||= "pencil"
 
