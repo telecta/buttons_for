@@ -17,10 +17,6 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.required_ruby_version = '>= 1.9.3'
-
-  s.add_dependency "railties", ">= 3.2", "< 5.0"
-  s.add_dependency "font-awesome-rails", "~> 4.4"
-
-  s.add_development_dependency "coveralls"
+  s.add_dependency "rails", "~> 4.2.4"
+  s.add_dependency "font-awesome-rails"
 end

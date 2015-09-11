@@ -28,6 +28,10 @@ Or install it yourself as:
 
     $ gem install buttons_for
 
+Run generator to add I18n locales:
+
+    $ rails generate buttons_for:install
+
 The gem depends on [Bootstrap 3](http://getbootstrap.com/) to create buttons and dropdown-buttons. Bring bootstrap into
 your project by using [Bootstrap for Sass](https://github.com/twbs/bootstrap-sass) or you preferred method.
 
@@ -45,6 +49,11 @@ framework, bring [Font Awesome][fontawesome] into your project using
   <%= b.delete %>
 <% end %>
 ```
+
+## Sample
+
+Sample applicaiton using `buttons_for` can be found
+[here](https://github.com/blacktangent/buttons_for).
 
 ## Development
 

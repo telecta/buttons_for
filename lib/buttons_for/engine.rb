@@ -1,5 +1,4 @@
 module ButtonsFor
-  class Engine < Rails::Engine
-    require "font-awesome-rails"
+  class Engine < ::Rails::Engine
   end
 end

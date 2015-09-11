@@ -1,2 +1,3 @@
 require "buttons_for/version"
-require "buttons_for/engine" if defined?(::Rails)
+require "buttons_for/engine"
+require "font-awesome-rails"
