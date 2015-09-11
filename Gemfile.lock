@@ -3,7 +3,7 @@ PATH
   specs:
     buttons_for (0.0.1)
       font-awesome-rails
-      rails (~> 4.2.4)
+      rails (>= 3.2, < 5.0)
 
 GEM
   remote: https://rubygems.org/
