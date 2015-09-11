@@ -20,13 +20,15 @@ module ButtonsFor
           options[:class] = classes(options)
           options[:title] = t(text)
 
-          label = if options[:icon]
-            fa_icon options.delete(:icon), text: t(text)
+          label = text.is_a?(String) ? text : t(text)
+
+          content = if options[:icon]
+            fa_icon options.delete(:icon), text: label
           else
-            t(text)
+            label
           end
 
-          link_to label, url, options
+          link_to content, url, options
         end
 
         def new(url, options = {}, &block)

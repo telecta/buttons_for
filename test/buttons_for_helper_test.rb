@@ -8,8 +8,13 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
   end
 
   test "#button capitalize text if translation is symbol" do
-    with_concat_buttons_for(Object.new) { |b| b.button "capitalized text", "#" }
+    with_concat_buttons_for(Object.new) { |b| b.button :capitalized_text, "#" }
     assert_select "a.btn", text: "Capitalized Text"
+  end
+
+  test "#button uses the text directly if text is a string" do
+    with_concat_buttons_for(Object.new) { |b| b.button "capitalized text", "#" }
+    assert_select "a.btn", text: "capitalized text"
   end
 
   test "#button uses the translation if value exists for key" do
