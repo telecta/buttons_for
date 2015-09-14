@@ -3,6 +3,8 @@ module ButtonsFor
     module ButtonsForHelper
 
       def buttons_for(object, &block)
+        raise ArgumentError, "Missing block" unless block_given?
+
         capture ButtonsForBuilder.new(object, self), &block
       end
 

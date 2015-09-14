@@ -2,6 +2,10 @@ require "test_helper"
 
 class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
 
+  test "#buttons_for(object, &block)" do
+    assert_raises(ArgumentError) { buttons_for(Object.new) }
+  end
+
   test "#button" do
     with_concat_buttons_for(Object.new) { |b| b.button "New", "#" }
     assert_select "a.btn[href=\"#\"][title=\"New\"]", text: "New"
