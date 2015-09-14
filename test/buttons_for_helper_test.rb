@@ -62,6 +62,7 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     end
     assert_select "div.btn-group" do |btn_element|
       assert_select btn_element, "button.btn.btn-default.dropdown-toggle[data-toggle=\"dropdown\"][aria-haspopup=\"true\"][aria-expanded=\"false\"]", text: "Actions"
+      assert_select btn_element, "span.caret"
       assert_select btn_element, "ul.dropdown-menu[aria-labelledby=\"actions\"]" do |links|
         assert_select links, "li a[href=\"#\"][title=\"content\"]", text: "content"
       end

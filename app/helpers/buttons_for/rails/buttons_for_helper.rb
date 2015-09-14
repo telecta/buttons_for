@@ -63,7 +63,9 @@ module ButtonsFor
           raise ArgumentError, "Missing block" unless block_given?
 
           content_tag(:div, class: "btn-group") do
-            concat content_tag :button, label(text), class: "btn btn-default dropdown-toggle", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"}
+            concat(content_tag(:button, label(text), class: "btn btn-default dropdown-toggle", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"}) do
+              "#{label(text)} #{content_tag(:span, '', class: "caret")}".html_safe
+            end)
             concat(content_tag(:ul, class: "dropdown-menu", "aria-labelledby" => text) do
               concat template.capture(&block)
             end)
