@@ -75,6 +75,14 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     end
   end
 
+  test "#link options[:icon]" do
+    with_concat_buttons_for(Object.new) do |b|
+      b.link "content", "#", icon: "shopping-cart"
+    end
+
+    assert_select "li a[href=\"#\"][title=\"content\"]"
+  end
+
   private
 
   def store_translations(locale, translations, &block)

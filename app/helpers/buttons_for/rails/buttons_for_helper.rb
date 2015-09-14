@@ -73,10 +73,22 @@ module ButtonsFor
         end
 
         def link(text, path, options = {})
-          content_tag(:li) { link_to(label(text), path, title: label(text)) }
+          options[:title] ||= label(text)
+
+          content = if options[:icon]
+            fa_icon(options.delete(:icon), text: label(text))
+          else
+            label(text)
+          end
+
+          content_tag(:li) { link_to(content, path, options) }
         end
 
         private
+
+        def prepare_text(text, icon)
+          icon.nil? ? label(text) : fa_icon(icon, text: label(text))
+        end
 
         def t(string)
           I18n.t("buttons_for.#{string.to_s}", default: string.to_s.titleize)
