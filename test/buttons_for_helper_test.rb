@@ -50,6 +50,26 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     assert_select "a", text: "New Project"
   end
 
+  test "#dropdown with #link" do
+    with_concat_buttons_for(Object.new) do |b|
+      b.dropdown(:actions) do
+        b.link "content", "#"
+      end
+    end
+    assert_select "div.btn-group" do |btn_element|
+      assert_select btn_element, "button.btn.btn-default.dropdown-toggle[data-toggle=\"dropdown\"][aria-haspopup=\"true\"][aria-expanded=\"false\"]", text: "Actions"
+      assert_select btn_element, "ul.dropdown-menu[aria-labelledby=\"actions\"]" do |links|
+        assert_select links, "li a[href=\"#\"][title=\"content\"]", text: "content"
+      end
+    end
+  end
+
+  test "#dropdown raises error of block is missing" do
+    assert_raises(ArgumentError) do
+      with_concat_buttons_for(Object.new) { |b| b.dropdown(:actions) }
+    end
+  end
+
   private
 
   def store_translations(locale, translations, &block)
