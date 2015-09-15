@@ -66,7 +66,7 @@ Available options:
 ## Sample
 
 Sample applicaiton using `buttons_for` can be found
-[here](https://github.com/blacktangent/buttons_for).
+[here](https://github.com/blacktangent/buttons_for-demo).
 
 ## Development
 
