@@ -28,7 +28,7 @@ module ButtonsFor
           link_to label(text, icon_options), url, options
         end
 
-        def new(url, options = {}, &block)
+        def new(url, options = {})
           options[:class] ||= "btn-success"
           options[:label] ||= label(:new)
           options[:icon] ||= "plus"
@@ -36,7 +36,7 @@ module ButtonsFor
           button options[:label], url, options
         end
 
-        def edit(url, options = {}, &block)
+        def edit(url, options = {})
           options[:class] ||= "btn-default"
           options[:label] ||= label(:edit)
           options[:icon] ||= "pencil"
@@ -44,7 +44,15 @@ module ButtonsFor
           button options[:label], url, options
         end
 
-        def delete(url, options = {}, &block)
+        def export(url, options = {})
+          options[:class] ||= "btn-default"
+          options[:label] ||= label(:export)
+          options[:icon] ||= "file-text-o"
+
+          button options[:label], url, options
+        end
+
+        def delete(url, options = {})
           options[:class] ||= "btn-danger"
           options[:label] ||= label(:delete)
           options[:icon]  ||= "trash-o"

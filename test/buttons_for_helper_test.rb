@@ -49,6 +49,13 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     end
   end
 
+  test "#export" do
+    with_concat_buttons_for(Object.new) { |b| b.export "#" }
+    assert_select "a.btn.btn[href=\"#\"][title=\"Export\"]", text: "Export" do |element|
+      assert_select element, "i.fa.fa-file-text-o"
+    end
+  end
+
   test "options[:label]" do
     with_concat_buttons_for(Object.new) { |b| b.new "#", label: "New Project" }
     assert_select "a", text: "New Project"
