@@ -65,6 +65,13 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     end
   end
 
+  test "#dropdown options[:icon] prepends icon to label" do
+    with_concat_buttons_for(Object.new) do |b|
+      b.dropdown("New", icon: "plus") { "content" }
+    end
+    assert_select "i.fa.fa-plus"
+  end
+
   test "#dropdown raises error of block is missing" do
     assert_raises(ArgumentError) do
       with_concat_buttons_for(Object.new) { |b| b.dropdown(:actions) }
