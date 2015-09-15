@@ -22,15 +22,10 @@ module ButtonsFor
           options[:class] = classes(options)
           options[:title] = t(text)
 
-          label = text.is_a?(String) ? text : t(text)
+          icon_options = {}
+          icon_options[:icon] = options.delete(:icon) if options.key?(:icon)
 
-          content = if options[:icon]
-            fa_icon options.delete(:icon), text: label
-          else
-            label
-          end
-
-          link_to content, url, options
+          link_to label(text, icon_options), url, options
         end
 
         def new(url, options = {}, &block)
@@ -75,27 +70,26 @@ module ButtonsFor
         def link(text, path, options = {})
           options[:title] ||= label(text)
 
-          content = if options[:icon]
-            fa_icon(options.delete(:icon), text: label(text))
-          else
-            label(text)
-          end
+          icon_options = {}
+          icon_options[:icon] = options.delete(:icon) if options.key?(:icon)
 
-          content_tag(:li) { link_to(content, path, options) }
+          content_tag(:li, link_to(label(text, icon_options), path, options))
         end
 
         private
-
-        def prepare_text(text, icon)
-          icon.nil? ? label(text) : fa_icon(icon, text: label(text))
-        end
 
         def t(string)
           I18n.t("buttons_for.#{string.to_s}", default: string.to_s.titleize)
         end
 
-        def label(text)
-          text.is_a?(String) ? text : t(text)
+        def label(text, options = {})
+          label = text.is_a?(String) ? text : t(text)
+
+          if options[:icon]
+            fa_icon(options[:icon], text: label)
+          else
+            label
+          end
         end
 
         def classes(options)

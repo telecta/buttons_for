@@ -54,7 +54,7 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     assert_select "a", text: "New Project"
   end
 
-  test "#dropdown with #link" do
+  test "#dropdown with content generates at dropdown" do
     with_concat_buttons_for(Object.new) do |b|
       b.dropdown(:actions) { "content" }
     end
