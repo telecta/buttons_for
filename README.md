@@ -47,11 +47,13 @@ Sample Application using `buttons_for` can be found
 ## Usage
 
 ```erb
-<%= buttons_for @project do |b| %>
-  <%= b.button :complete, new_project_complete_path(@project), icon: "check" %>
-  <%= b.new %>
-  <%= b.edit %>
-  <%= b.delete %>
+<%= buttons_for @company do |b| %>
+  <%= b.dropdown :actions do %>
+    <%= b.new new_company_project_path(@company) %>
+    <%= b.button t(".projects"), company_projects_path(@company), icon: "list" %>
+  <% end %>
+  <%= b.edit edit_company_path(@company) %>
+  <%= b.delete company_path(@company) %>
 <% end %>
 ```
 
