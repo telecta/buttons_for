@@ -56,16 +56,12 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
 
   test "#dropdown with #link" do
     with_concat_buttons_for(Object.new) do |b|
-      b.dropdown(:actions) do
-        b.link "content", "#"
-      end
+      b.dropdown(:actions) { "content" }
     end
     assert_select "div.btn-group" do |btn_element|
       assert_select btn_element, "button.btn.btn-default.dropdown-toggle[data-toggle=\"dropdown\"][aria-haspopup=\"true\"][aria-expanded=\"false\"]", text: "Actions"
       assert_select btn_element, "span.caret"
-      assert_select btn_element, "ul.dropdown-menu[aria-labelledby=\"actions\"]" do |links|
-        assert_select links, "li a[href=\"#\"][title=\"content\"]", text: "content"
-      end
+      assert_select btn_element, "ul.dropdown-menu[aria-labelledby=\"actions\"]", text: "content"
     end
   end
 
@@ -73,6 +69,11 @@ class ButtonsFor::Rails::ButtonsForHelperTest < ActionView::TestCase
     assert_raises(ArgumentError) do
       with_concat_buttons_for(Object.new) { |b| b.dropdown(:actions) }
     end
+  end
+
+  test "#link" do
+    with_concat_buttons_for(Object.new)  { |b| b.link "text", "#" }
+    assert_select "li a[href=\"#\"][title=\"text\"]", text: "text"
   end
 
   test "#link options[:icon]" do
