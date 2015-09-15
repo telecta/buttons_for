@@ -39,6 +39,11 @@ your project by using [Bootstrap for Sass](https://github.com/twbs/bootstrap-sas
 framework, bring [Font Awesome][fontawesome] into your project using
 [font-awesome-rails][fontawesomerails] or your preferred method.
 
+## Sample Application
+
+Sample Application using `buttons_for` can be found
+[here](https://github.com/blacktangent/rails-buttons_for)
+
 ## Usage
 
 ```erb
