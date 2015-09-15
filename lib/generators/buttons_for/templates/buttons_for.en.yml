@@ -3,4 +3,5 @@ en:
     new: "New"
     edit: "Edit"
     delete: "Delete"
+    export: "Export"
     confirm: "Are you sure?"
