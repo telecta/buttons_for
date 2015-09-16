@@ -2,20 +2,20 @@ module ButtonsFor
   module Rails
     module ButtonsForHelper
 
-      def buttons_for(object, &block)
+      def buttons_for(options = {}, &block)
         raise ArgumentError, "Missing block" unless block_given?
 
-        capture ButtonsForBuilder.new(object, self), &block
+        capture ButtonsForBuilder.new(self), &block
       end
 
       class ButtonsForBuilder
         include ActionView::Helpers
         include FontAwesome::Rails::IconHelper
 
-        attr_accessor :object, :template, :output_buffer
+        attr_accessor :template, :output_buffer
 
-        def initialize(object, template)
-          @object, @template = object, template
+        def initialize(template)
+          @template = template
         end
 
         def button(text, url, options = {}, &block)

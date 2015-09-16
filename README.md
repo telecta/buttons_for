@@ -46,30 +46,32 @@ quite simple and does not support url generation or any advanced
 functionallity. It's just ment as a thin wrapper around `link_to` and
 should pass the options transparently.
 
-The helpers you'll use the most provides a button with a color and a
+The helpers you'll use the most provide buttons with a color and a
 leading icon. The following standard buttons can be used: `new`, `edit`,
-`delete` and `export`. These buttons are just wrappers around `button`
+`delete` and `export`. These buttons are just wrappers around the `button` helper
 giving it options containing icon and button class.
 
 `buttons_for` also provides a helper for creating dropdown buttons. Use
 `dropdown` with a block containing `link` elements to achive this.
 
-Example for show view:
+Example show button menu:
 
 ```erb
-<%= buttons_for @company do |b| %>
+<%= buttons_for do |b| %>
   <%= b.dropdown :actions do %>
     <%= b.link "Projects", company_projects_path(@company), icon: "list" %>
   <% end %>
+  <%= b.button t(".lock"), lock_company_path(@company), icon: "lock", class: "btn-default" %>
   <%= b.edit edit_company_path(@company) %>
   <%= b.delete company_path(@company) %>
 <% end %>
+</div>
 ```
 
-Example for index view:
+Example index button menu:
 
 ```erb
-<%= buttons_for @companies do |b| %>
+<%= buttons_for do |b| %>
   <%= b.new url_for(action: :new) %>
   <%= b.export url_for(format: :csv) %>
 <% end %>
