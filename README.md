@@ -59,8 +59,7 @@ Example for show view:
 ```erb
 <%= buttons_for @company do |b| %>
   <%= b.dropdown :actions do %>
-    <%= b.link t('.new_projects'), new_company_project_path(@company) %>
-    <%= b.link t(".projects"), company_projects_path(@company), icon: "list" %>
+    <%= b.link "Projects", company_projects_path(@company), icon: "list" %>
   <% end %>
   <%= b.edit edit_company_path(@company) %>
   <%= b.delete company_path(@company) %>
