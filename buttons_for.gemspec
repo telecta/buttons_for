@@ -13,9 +13,10 @@ Gem::Specification.new do |s|
   s.summary     = "Easily create Bootstrap buttons in Rails."
   s.description = "ActionView Helper for generating Bootstrap buttons."
   s.license     = "MIT"
+  s.files       = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files  = Dir["test/**/*"]
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.required_ruby_version = '>= 1.9.3'
 
   s.add_dependency "rails", ">= 3.2", "< 5.0"
   s.add_dependency "font-awesome-rails"
