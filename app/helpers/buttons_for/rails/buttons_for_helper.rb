@@ -22,8 +22,7 @@ module ButtonsFor
           options[:class] = classes(options)
           options[:title] = t(text)
 
-          icon_options = {}
-          icon_options[:icon] = options.delete(:icon) if options.key?(:icon)
+          icon_options = extract_icon_options!(options)
 
           link_to label(text, icon_options), url, options
         end
@@ -65,8 +64,7 @@ module ButtonsFor
         def dropdown(text, options = {}, &block)
           raise ArgumentError, "Missing block" unless block_given?
 
-          icon_options = {}
-          icon_options[:icon] = options.delete(:icon) if options.key?(:icon)
+          icon_options = extract_icon_options!(options)
 
           content_tag(:div, class: "btn-group") do
             concat(content_tag(:button, label(text), class: "btn btn-default dropdown-toggle", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"}) do
@@ -81,13 +79,18 @@ module ButtonsFor
         def link(text, path, options = {})
           options[:title] ||= label(text)
 
-          icon_options = {}
-          icon_options[:icon] = options.delete(:icon) if options.key?(:icon)
+          icon_options = extract_icon_options!(options)
 
           content_tag(:li, link_to(label(text, icon_options), path, options))
         end
 
         private
+
+        def extract_icon_options!(options)
+          {}.tap do |icon_options|
+            icon_options[:icon] = options.delete(:icon) if options.key?(:icon)
+          end
+        end
 
         def t(string)
           I18n.t("buttons_for.#{string.to_s}", default: string.to_s.titleize)
