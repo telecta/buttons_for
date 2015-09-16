@@ -39,6 +39,9 @@ your project by using [Bootstrap for Sass](https://github.com/twbs/bootstrap-sas
 framework, bring [Font Awesome][fontawesome] into your project using
 [font-awesome-rails][fontawesomerails] or your preferred method.
 
+## Screenshot
+![Screenshot](https://cloud.githubusercontent.com/assets/1222916/9902312/b08d89bc-5c97-11e5-94c6-7a0e78934556.png)
+
 ## Usage
 
 `buttons_for` has multiple helper methods. The API is intentionally made

@@ -19,46 +19,52 @@ module ButtonsFor
         end
 
         def button(text, url, options = {}, &block)
-          options[:class] = classes(options)
-          options[:title] = t(text)
-
           icon_options = extract_icon_options!(options)
 
-          link_to label(text, icon_options), url, options
+          link_to label(text, icon_options), url, options.merge(
+            class: classes(options),
+            title: t(text),
+          )
         end
 
         def new(url, options = {})
-          options[:class] ||= "btn-success"
           options[:label] ||= label(:new)
-          options[:icon] ||= "plus"
 
-          button options[:label], url, options
+          button options[:label], url, options.reverse_merge(
+            icon: 'plus',
+            class: 'btn-success'
+          )
         end
 
         def edit(url, options = {})
-          options[:class] ||= "btn-default"
           options[:label] ||= label(:edit)
-          options[:icon] ||= "pencil"
 
-          button options[:label], url, options
+          button options[:label], url, options.reverse_merge(
+            class: 'btn-default',
+            icon: 'pencil'
+          )
         end
 
         def export(url, options = {})
-          options[:class] ||= "btn-default"
           options[:label] ||= label(:export)
-          options[:icon] ||= "file-text-o"
 
-          button options[:label], url, options
+          button options[:label], url, options.reverse_merge(
+            class: 'btn-default',
+            icon: 'file-text-o'
+          )
         end
 
         def delete(url, options = {})
-          options[:class] ||= "btn-danger"
           options[:label] ||= label(:delete)
-          options[:icon]  ||= "trash-o"
-          options[:method] = :delete
-          options["data-confirm"] = t(:confirm)
 
-          button options[:label], url, options
+          button options[:label], url, options.reverse_merge(
+            class: 'btn-danger',
+            icon: 'trash-o',
+            method: :delete,
+            data: {
+              confirm: t(:confirm)
+            }
+          )
         end
 
         def dropdown(text, options = {}, &block)
