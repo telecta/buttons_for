@@ -39,21 +39,40 @@ your project by using [Bootstrap for Sass](https://github.com/twbs/bootstrap-sas
 framework, bring [Font Awesome][fontawesome] into your project using
 [font-awesome-rails][fontawesomerails] or your preferred method.
 
-## Sample Application
-
-Sample Application using `buttons_for` can be found
-[here](https://github.com/blacktangent/rails-buttons_for)
-
 ## Usage
+
+`buttons_for` has multiple helper methods. The API is intentionally made
+quite simple and does not support url generation or any advanced
+functionallity. It's just ment as a thin wrapper around `link_to` and
+should pass the options transparently.
+
+The helpers you'll use the most provides a button with a color and a
+leading icon. The following standard buttons can be used: `new`, `edit`,
+`delete` and `export`. These buttons are just wrappers around `button`
+giving it options containing icon and button class.
+
+`buttons_for` also provides a helper for creating dropdown buttons. Use
+`dropdown` with a block containing `link` elements to achive this.
+
+Example for show view:
 
 ```erb
 <%= buttons_for @company do |b| %>
   <%= b.dropdown :actions do %>
-    <%= b.new new_company_project_path(@company) %>
-    <%= b.button t(".projects"), company_projects_path(@company), icon: "list" %>
+    <%= b.link t('.new_projects'), new_company_project_path(@company) %>
+    <%= b.link t(".projects"), company_projects_path(@company), icon: "list" %>
   <% end %>
   <%= b.edit edit_company_path(@company) %>
   <%= b.delete company_path(@company) %>
+<% end %>
+```
+
+Example for index view:
+
+```erb
+<%= buttons_for @companies do |b| %>
+  <%= b.new url_for(action: :new) %>
+  <%= b.export url_for(format: :csv) %>
 <% end %>
 ```
 
@@ -61,12 +80,12 @@ Sample Application using `buttons_for` can be found
 
 Available options:
 
-* __:label__ - Override standard label
+* __:label__ - Override standard label.
+* __:class__ - Appendse given string to existing CSS classes.
+* __:icon__  - Prefix or replace exsiting icon.
 
 ## Sample
-
-Sample applicaiton using `buttons_for` can be found
-[here](https://github.com/blacktangent/buttons_for-demo).
+Sample applicaiton using `buttons_for` can be found [here](https://github.com/blacktangent/buttons_for-demo).
 
 ## Development
 
