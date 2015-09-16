@@ -88,6 +88,12 @@ Available options:
 * __:class__ - Appendse given string to existing CSS classes.
 * __:icon__  - Prefix or replace exsiting icon.
 
+## Translations
+
+The installer copies the file `buttons_for.en.yml` into your
+`config/locales/` directory. Add a corresponding file with your own
+locale to translate the buttons.
+
 ## Sample
 Sample applicaiton using `buttons_for` can be found [here](https://github.com/blacktangent/buttons_for-demo).
 

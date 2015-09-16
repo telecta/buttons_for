@@ -1,5 +1,6 @@
 en:
   buttons_for:
+    actions: "Actions"
     new: "New"
     edit: "Edit"
     delete: "Delete"
