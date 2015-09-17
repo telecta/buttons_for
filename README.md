@@ -3,12 +3,14 @@
 [fontawesome]: https://fortawesome.github.io/Font-Awesome
 [fontawesomerails]: https://github.com/bokmann/font-awesome-rails
 [coveralls]: https://coveralls.io/r/blacktangent/buttons_for
+[rubygems]: https://rubygems.org/gems/buttons_for
 
 # ButtonsFor
 
 [![Build Status](https://travis-ci.org/blacktangent/buttons_for.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/blacktangent/buttons_for/badges/gpa.svg)][codeclimate]
 [![Test Coverage](http://img.shields.io/coveralls/blacktangent/buttons_for/master.svg)][coveralls]
+[![Gem Version](http://img.shields.io/gem/v/buttons_for.svg)][rubygems]
 
 ActiveView helper to generate Bootstrap buttons and dropdown-buttons.
 
