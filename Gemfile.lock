@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    buttons_for (0.1.1)
+    buttons_for (0.1.2)
       font-awesome-rails
       rails (>= 3.2, < 5.0)
 
