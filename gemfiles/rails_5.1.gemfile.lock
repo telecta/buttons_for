@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     buttons_for (0.1.5)
       font-awesome-rails
@@ -120,6 +120,7 @@ PLATFORMS
 DEPENDENCIES
   appraisal
   buttons_for!
+  rails (~> 5.1.0)
   sqlite3
 
 BUNDLED WITH
